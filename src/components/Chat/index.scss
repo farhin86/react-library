@@ -1,0 +1,41 @@
+.wrapper-chat {
+  .chat {
+    border: 2px solid #000000;
+    border-radius: 8px;
+    width: 500px;
+    max-height: 450px;
+    overflow-y: auto;
+    padding: 20px;
+    margin: auto;
+    .focus {
+      background-color: yellow;
+    }
+    .individual-chat {
+      width: fit-content;
+      border-radius: 8px;
+      color: #ffffff;
+      padding: 10px;
+      margin-bottom: 10px;
+      max-width: 65%;
+      text-align: left;
+    }
+    .left {
+      background: #655f5f;
+      margin-right: auto;
+    }
+    .right {
+      background: #39776f;
+      margin-left: auto;
+    }
+  }
+  button {
+    background: #39776f;
+    border: none;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 8px;
+    width: 60px;
+    height: 32px;
+    cursor: pointer;
+  }
+}
