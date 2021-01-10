@@ -49,12 +49,17 @@ export default class Chat extends React.Component{
     // findQuery=()=>{
     //     let {newMessage,messageData}= this.state
     //     let {query}= this.props
-    //     messageData.map((eachMsg,index)=>{
-    //         if(eachMsg.message.indexOf(query) >-1){
-    //             console.log(eachMsg.message)
-    //         }
-    //         return
-    //     })
+
+    //     const searched = messageData.map((chat) => {
+    //         let message = chat.message.replace(query, `<mark>${query}</mark>`);
+    //         return {
+    //           ...chat,
+    //           message
+    //         };
+    //       });
+    //       this.setState({
+    //         messageData: searched
+    //       })
     // }
     userMessage=(e)=>{
         this.setState({
@@ -78,20 +83,19 @@ export default class Chat extends React.Component{
             <div className='wrapper-chat'>
                 <div className='chat'>
                     {messageData.map((userInstance,index)=>{
-                        console.log(query.length)
-                         if(query.length >0 && userInstance.message.indexOf(query)> -1){
+                        if(query.length >0 && userInstance.message.indexOf(query)> -1){
                             let orgMsg=userInstance.message;
                             let msg= orgMsg.split(" ").map(word => {
                                 if(word.indexOf(query) > -1){
-                                    return <span style={{ backgroundColor: '#ffff00db',color: '#000' }}>{`${word} `}</span>;
+                                    return <mark>{`${word} `}</mark>;
                                 }else{
                                     return <span>{`${word} `}</span>;
                                 }
-                              })
+                                })
                             return <div key={`${userInstance.userId}-${index}`} className={`individual-chat ${userInstance.userId === 1 ? 'left' :'right'}`}>{msg} </div>
-                         }else{
-                        return <div key={`${userInstance.userId}-${index}`} className={`individual-chat ${userInstance.userId === 1 ? 'left' :'right'}`}>{userInstance.message} </div>
-                         }
+                        }else{
+                            return <div key={`${userInstance.userId}-${index}`} className={`individual-chat ${userInstance.userId === 1 ? 'left' :'right'}`}>{userInstance.message} </div>
+                        }
                     })}
                 </div>
                 <input value={newMessage} placeholder="Type a message" onChange={this.userMessage}/>
