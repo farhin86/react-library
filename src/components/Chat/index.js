@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useRef, useEffect} from 'react'
 import './index.scss'
 const messageData=[
     {
@@ -66,14 +66,16 @@ export default class Chat extends React.Component{
             newMessage: e.target.value
         })
     }
-    sendMsg=()=>{
-        let {newMessage,messageData}= this.state
-        let latestMsg={userId: 2, message: newMessage };
-        let newMessageData=[...messageData,latestMsg]
-        this.setState({
-            messageData: newMessageData,
-            newMessage:''
-        })
+    sendMsg=(e)=>{
+        if(e.key === 'Enter'){
+            let {newMessage,messageData}= this.state
+            let latestMsg={userId: 2, message: newMessage };
+            let newMessageData=[...messageData,latestMsg]
+            this.setState({
+                messageData: newMessageData,
+                newMessage:''
+            })
+        }
     }
     render(){
         let {newMessage,messageData}= this.state
@@ -97,10 +99,16 @@ export default class Chat extends React.Component{
                             return <div key={`${userInstance.userId}-${index}`} className={`individual-chat ${userInstance.userId === 1 ? 'left' :'right'}`}>{userInstance.message} </div>
                         }
                     })}
+                    <AlwaysScrollToBottom />
                 </div>
-                <input value={newMessage} placeholder="Type a message" onChange={this.userMessage}/>
-                <button onClick={this.sendMsg}>Send</button>
+                <input value={newMessage} placeholder="Type a message" onChange={this.userMessage} onKeyPress={this.sendMsg}/>
+                {/* <button onClick={this.sendMsg}>Send</button> */}
             </div>
         )
     }
 }
+const AlwaysScrollToBottom = () => {
+    const elementRef = useRef();
+    useEffect(() => elementRef.current.scrollIntoView());
+    return <div ref={elementRef} />;
+  };

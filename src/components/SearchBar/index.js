@@ -39,7 +39,7 @@ export default class SearchBar extends Component{
     render(){
         return(
             <>
-                <input placeholder="Search using debounce 3sec" onChange={this.debounce((e)=>this.handleSearch(e), 3000)}/>
+                <input className='debounce' placeholder="Search using debounce 3sec" onChange={this.debounce((e)=>this.handleSearch(e), 3000)}/>
                 <input placeholder="Search using throttling 3sec" onChange={this.throttle((e)=>this.handleSearch(e), 3000)}/>
             </>
         )

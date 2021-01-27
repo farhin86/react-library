@@ -1,8 +1,12 @@
 .wrapper-chat {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   .chat {
     border: 2px solid #000000;
     border-radius: 8px;
-    width: 500px;
+    width: 50%;
     max-height: 450px;
     overflow-y: auto;
     padding: 20px;
@@ -37,5 +41,13 @@
     width: 60px;
     height: 32px;
     cursor: pointer;
+  }
+}
+@media all and (max-width: 576px) {
+  .wrapper-chat {
+    .chat {
+      width: 91%;
+      padding: 4%;
+    }
   }
 }
