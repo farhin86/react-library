@@ -1,30 +1,33 @@
-import React,{useRef, useEffect} from 'react'
+import React,{useRef, useEffect} from 'react';
+import 'emoji-mart/css/emoji-mart.css'
+import { Picker } from 'emoji-mart'
+
 import './index.scss'
 const messageData=[
     {
         userId: 1,
         message: 'Hey'
     },
-    {
-        userId: 2,
-        message: 'Hi'
-    },
-    {
-        userId: 2,
-        message: 'I was wondering if you want to have a trip tomorrow'
-    },
-    {
-        userId: 1,
-        message: 'sure'
-    },
-    {
-        userId: 2,
-        message: 'when'
-    },
-    {
-        userId: 1,
-        message: 'Was wondering if you want to have a trip tomorrow and I was wondering if you want to have a trip tomorrow,I was wondering if you want to have a trip tomorrow'
-    },
+    // {
+    //     userId: 2,
+    //     message: 'Hi'
+    // },
+    // {
+    //     userId: 2,
+    //     message: 'I was wondering if you want to have a trip tomorrow'
+    // },
+    // {
+    //     userId: 1,
+    //     message: 'sure'
+    // },
+    // {
+    //     userId: 2,
+    //     message: 'when'
+    // },
+    // {
+    //     userId: 1,
+    //     message: 'Was wondering if you want to have a trip tomorrow and I was wondering if you want to have a trip tomorrow,I was wondering if you want to have a trip tomorrow'
+    // },
     {
         userId: 2,
         message: 'Then nandi hills and will see the sunrise together.'
@@ -38,7 +41,8 @@ const messageData=[
 export default class Chat extends React.Component{
     state={
         messageData: messageData,
-        newMessage:''
+        newMessage:'',
+        openSmiley: false
     }
 
     // componentDidUpdate(prevProps) {
@@ -77,10 +81,16 @@ export default class Chat extends React.Component{
             })
         }
     }
+    addEmoji=(e)=>{
+        let {newMessage}= this.state
+        let updatedMsg= `${newMessage}${e.native}`;
+        this.setState({
+            newMessage:updatedMsg
+        })
+    }
     render(){
-        let {newMessage,messageData}= this.state
+        let {newMessage,messageData,openSmiley}= this.state
         let {query}= this.props
-
         return(
             <div className='wrapper-chat'>
                 <div className='chat'>
@@ -101,8 +111,11 @@ export default class Chat extends React.Component{
                     })}
                     <AlwaysScrollToBottom />
                 </div>
-                <input value={newMessage} placeholder="Type a message" onChange={this.userMessage} onKeyPress={this.sendMsg}/>
-                {/* <button onClick={this.sendMsg}>Send</button> */}
+                {openSmiley && <Picker className="smiley-picker" set='apple' onSelect={this.addEmoji} />}
+                <div className='message-write-wrapper'>
+                    <div className='import-smiley' onClick={()=>this.setState({openSmiley: !openSmiley})}>😀</div>
+                    <input className='message' value={newMessage} placeholder="Type a message" onChange={this.userMessage} onKeyPress={this.sendMsg}/>
+                </div>
             </div>
         )
     }

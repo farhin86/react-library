@@ -1,16 +1,16 @@
 .wrapper-chat {
   width: 100%;
+  height: 90%;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   .chat {
-    border: 2px solid #000000;
-    border-radius: 8px;
-    width: 50%;
-    max-height: 450px;
+    // max-height: 450px;
+    width: 90%;
     overflow-y: auto;
-    padding: 20px;
-    margin: auto;
+    padding: 5%;
+    // margin: auto;
     .focus {
       background-color: yellow;
     }
@@ -30,6 +30,44 @@
     .right {
       background: #39776f;
       margin-left: auto;
+    }
+  }
+  .emoji-mart {
+    bottom: 62px;
+    width: 100% !important;
+    position: absolute;
+    .emoji-mart-search,
+    .emoji-mart-preview {
+      display: none;
+    }
+    button {
+      background-color: #ffffff;
+      color: #655f5f;
+    }
+    button:focus {
+      outline: none;
+    }
+  }
+  .message-write-wrapper {
+    width: 90%;
+    min-height: 62px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    background: #655f5f;
+    padding: 0% 5%;
+    .import-smiley {
+      cursor: pointer;
+    }
+    .message {
+      width: 80%;
+      padding: 9px 12px 11px;
+      // margin: 5px 10px;
+      margin: 0% 5%;
+      border: none;
+      // border: 1px solid var(--compose-input-border);
+      border-radius: 21px;
     }
   }
   button {

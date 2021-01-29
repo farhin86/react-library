@@ -1,4 +1,16 @@
 .whatschat-wrapper {
-  width: 100%;
-  padding: 5%;
+  width: 50%;
+  height: 100%;
+  box-shadow: 0px 0px 8px 4px #655f5f;
+  // width: 90%;
+  // padding: 5%;
+  // align-items: center;
+  // display: flex;
+  // flex-direction: column;
+}
+
+@media all and (max-width: 576px) {
+  .whatschat-wrapper {
+    width: 100%;
+  }
 }

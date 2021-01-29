@@ -1,0 +1,37 @@
+.main-header {
+  height: 10%;
+  background-color: #655f5f;
+  //   height: 64px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0% 5%;
+  .profile {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    .dp {
+      width: 44px;
+      height: 44px;
+      background-color: #ffffff;
+      border-radius: 40px;
+    }
+    .profile-name {
+      margin-left: 5%;
+      font-weight: 600;
+    }
+  }
+  .options {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 50%;
+    .three-dot {
+      margin-left: 2%;
+      cursor: pointer;
+      height: 25px;
+      opacity: 0.7;
+    }
+  }
+}

@@ -1,5 +1,11 @@
 .App {
   text-align: center;
+  width: 90%;
+  padding: 0% 5%;
+  height: 100vh;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -34,5 +40,11 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+@media all and (max-width: 576px) {
+  .App {
+    width: 100%;
+    padding: 0%;
   }
 }
