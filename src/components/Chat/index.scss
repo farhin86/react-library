@@ -6,11 +6,10 @@
   flex-direction: column;
   align-items: center;
   .chat {
-    // max-height: 450px;
     width: 90%;
     overflow-y: auto;
     padding: 5%;
-    // margin: auto;
+    padding-bottom: 62px;
     .focus {
       background-color: yellow;
     }
@@ -62,7 +61,7 @@
     }
     .message {
       width: 80%;
-      padding: 9px 12px 11px;
+      padding: 0px 10px;
       // margin: 5px 10px;
       margin: 0% 5%;
       border: none;

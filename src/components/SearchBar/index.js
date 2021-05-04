@@ -1,15 +1,15 @@
-import React,{Component} from 'react'
+import React,{useState} from 'react'
 import "./index.scss"
-export default class SearchBar extends Component{
 
-    debounce=(fn, delay)=>{
+export const SearchBar = React.forwardRef((props, ref) => {
+    const debounce=(fn, delay)=>{
         let timedId;
         return function(...args){
             clearTimeout(timedId)
             timedId= setTimeout(()=>fn(...args),delay)
         }
     }
-    // debounce = (func, delay) => {
+    //const debounce = (func, delay) => {
     //     let inDebounce
     //     return function() {
     //       const context = this
@@ -19,7 +19,7 @@ export default class SearchBar extends Component{
     //     }
     //   }
 
-    throttle = (func, limit) => {
+    const throttle = (func, limit) => {
         let inThrottle
         return function() {
           const args = arguments
@@ -31,17 +31,15 @@ export default class SearchBar extends Component{
           }
         }
       }
-    handleSearch = (event) => {
+    const handleSearch = (event) => {
         let searchString = event.target.value;
-        this.props.searchQuery(searchString)
+        props.searchQuery(searchString)
         console.log("searching...",searchString);
     }
-    render(){
-        return(
-            <>
-                <input className='debounce' placeholder="Search using debounce 3sec" onChange={this.debounce((e)=>this.handleSearch(e), 3000)}/>
-                {/* <input placeholder="Search using throttling 3sec" onChange={this.throttle((e)=>this.handleSearch(e), 3000)}/> */}
-            </>
-        )
-    }
-}
+    return(
+        <>
+            <input ref={ref} className='debounce-search' placeholder="Search using debounce 3sec"  onChange={debounce((e)=>handleSearch(e), 3000)}/>
+            {/* <input placeholder="Search using throttling 3sec" onChange={this.throttle((e)=>this.handleSearch(e), 3000)}/> */}
+        </>
+    )
+})

@@ -1,0 +1,26 @@
+.position-wrapper {
+  margin-top: 5rem;
+  .button-wrapper {
+    display: flex;
+    width: 600px;
+    justify-content: space-between;
+    margin-bottom: 5rem;
+    button {
+      padding: 0.5rem 0.5px;
+      background: #764abc;
+      line-height: 1.2;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      width: 200px;
+      outline: none;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+    div {
+      font-size: 20px;
+      color: blueviolet;
+    }
+  }
+}
